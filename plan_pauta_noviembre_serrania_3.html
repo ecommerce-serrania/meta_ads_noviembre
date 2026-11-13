@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan de pauta Meta · Noviembre 2026 · Serranía</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B2026; --petro:#003744; --beige:#EFE4D7; --paper:#FBF8F3; --card:#FFFFFF;
+  --muted:#5C6E74; --line:#E2D9CC; --gold:#A67C1A;
+  --s1:#1E7FA3; --s2:#B3394A; --s3:#A67C1A; --s4:#5A4A8C; --neutral:#B9C2C5;
+  --bad:#B3261E; --good:#1D7A4F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Montserrat,Arial,Helvetica,sans-serif;font-size:14px;line-height:1.45}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 48px}
+header{background:var(--petro);color:#fff;border-radius:10px;padding:26px 30px;display:flex;justify-content:space-between;gap:24px;align-items:flex-end;flex-wrap:wrap}
+header h1{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:30px;margin:0 0 6px;letter-spacing:.2px}
+header p{margin:0;color:#CFE0E5;font-size:14px}
+header .goal{background:var(--beige);color:var(--ink);border-radius:8px;padding:12px 18px;text-align:right}
+header .goal b{display:block;font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
+header .goal span{font-size:12px;color:#3d4f55}
+h2{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:22px;margin:34px 0 4px}
+h2 small{font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.4px;color:var(--gold);display:block;margin-bottom:2px;text-transform:uppercase}
+.lead{margin:0 0 14px;color:var(--muted);max-width:820px}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:1fr 1fr}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .lab{font-size:11.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.kpi .val{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;margin:4px 0 2px}
+.kpi .sub{font-size:12.5px;color:var(--muted)}
+.kpi .sub b{color:var(--ink)}
+.up{color:var(--bad);font-weight:700}
+.cmp h3,.card h3{font-size:13.5px;margin:0 0 10px;font-weight:700}
+.row{display:grid;grid-template-columns:46px 1fr 86px;align-items:center;gap:8px;margin:6px 0;font-size:12.5px}
+.row .bar{height:14px;border-radius:0 4px 4px 0;background:var(--neutral)}
+.row .bar.now{background:var(--petro)}
+.row .v{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--muted);margin:8px 0 0}
+.why{border-left:4px solid var(--gold);padding:10px 14px;background:#fff;border-radius:0 8px 8px 0;font-size:13px}
+.why b{display:block;margin-bottom:2px}
+/* estructura */
+.camp{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.camp .top{background:var(--ink);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.camp .top b{font-size:15px}.camp .top span{font-size:12px;color:#C9D6DA}
+.sets{display:grid;gap:10px;padding:12px}
+.set{border:1px solid var(--line);border-radius:8px;padding:11px 13px;border-left-width:6px}
+.set .hd{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.set .hd b{font-size:14px}.set .hd span{font-weight:700;font-variant-numeric:tabular-nums;font-size:13.5px}
+.set .meta{font-size:12px;color:var(--muted);margin:3px 0 5px}
+.set .ads{font-size:12.5px}
+.set .pq{font-size:12.5px;margin-top:5px;color:#2b3d43}
+.set .pq i{font-style:normal;font-weight:700;color:var(--gold)}
+/* charts */
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;margin:2px 0 8px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:Montserrat,Arial,sans-serif;fill:var(--muted);font-size:11px}
+svg .strong{fill:var(--ink);font-weight:600}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;padding:8px 10px;border-radius:6px;font-size:12px;line-height:1.5;opacity:0;transition:opacity .1s;z-index:9;min-width:150px;font-variant-numeric:tabular-nums}
+#tip b{display:block;margin-bottom:2px}
+#tip span{display:flex;justify-content:space-between;gap:14px}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th{background:var(--petro);color:#fff;text-align:left;padding:7px 9px;font-weight:600;font-size:12px}
+td{padding:7px 9px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+td.n,th.n{text-align:right}
+.rules{counter-reset:r}
+.rule{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:9px 0;border-bottom:1px solid var(--line)}
+.rule:last-child{border-bottom:0}
+.rule::before{counter-increment:r;content:counter(r);background:var(--beige);color:var(--ink);font-weight:700;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px}
+.rule b{display:block;font-size:13.5px}.rule span{font-size:12.5px;color:var(--muted)}
+.tl{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.tl div{background:#fff;border:1px solid var(--line);border-top:4px solid var(--petro);border-radius:8px;padding:9px 10px;font-size:12px}
+.tl b{display:block;font-size:12.5px;margin-bottom:2px}
+.sc{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sc div{border-radius:8px;padding:12px;text-align:center;border:1px solid var(--line);background:#fff}
+.sc b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+.sc .ok b{color:var(--good)} .sc .ko b{color:var(--bad)}
+.sc span{font-size:12px;color:var(--muted)}
+footer{margin-top:26px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+@media(max-width:900px){.g4,.g3,.g2,.tl,.sc{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.g4,.g3,.g2,.tl,.sc{grid-template-columns:1fr}}
+@media print{body{background:#fff}.card,.camp,.set{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="tip"></div>
+<div class="wrap">
+
+<header>
+  <div>
+    <h1>Plan de pauta en Meta · Noviembre 2026</h1>
+    <p>Tienda online serrania.co · del viernes 13 al lunes 30 · Black Days y Navidad</p>
+  </div>
+  <div class="goal"><span>Objetivo del mes</span><b>Pauta ≤ 20% de las ventas</b><span>Ventas $300 M · Pauta máxima $60 M · MER de 5 o más</span></div>
+</header>
+
+<h2><small>1 · Punto de partida</small>Vendemos más que en 2025, pero cada venta cuesta más</h2>
+<p class="lead">Del 1 al 11 de noviembre, comparado con los mismos días del año pasado (Shopify y Meta).</p>
+
+<div class="grid g4">
+  <div class="card kpi"><div class="lab">Ventas 1–11 nov</div><div class="val">$47,9 M</div><div class="sub">2025: <b>$28,8 M</b> · +66%</div></div>
+  <div class="card kpi"><div class="lab">Pedidos</div><div class="val">186</div><div class="sub">2025: <b>132</b> · +41%</div></div>
+  <div class="card kpi"><div class="lab">Pauta sobre ventas</div><div class="val up">32,9%</div><div class="sub">MER <b>3,0</b> · 2025: <b>24,6%</b> · meta: <b>20%</b> (MER 5)</div></div>
+  <div class="card kpi"><div class="lab">Pauta por pedido</div><div class="val up">$84.700</div><div class="sub">2025: <b>$53.700</b> · meta: <b>$51.500</b></div></div>
+</div>
+
+<div class="grid g3" style="margin-top:14px">
+  <div class="card cmp"><h3>Costo por mil impresiones</h3>
+    <div class="row"><span>2025</span><div><div class="bar" style="width:55%"></div></div><span class="v">$10.900</span></div>
+    <div class="row"><span>2026</span><div><div class="bar now" style="width:100%"></div></div><span class="v">$19.700</span></div>
+    <p class="note">Mostrar los anuncios cuesta 80% más que hace un año.</p></div>
+  <div class="card cmp"><h3>A dónde se fue la pauta (1–11 nov 2026)</h3>
+    <div class="row"><span>Blazers</span><div><div class="bar now" style="width:100%"></div></div><span class="v">52%</span></div>
+    <div class="row"><span>Buzos</span><div><div class="bar now" style="width:87%"></div></div><span class="v">45%</span></div>
+    <div class="row"><span>Navidad</span><div><div class="bar now" style="width:6%"></div></div><span class="v">3%</span></div>
+    <p class="note">Blazers recibió más de la mitad y tuvo la compra más cara.</p></div>
+  <div class="card cmp"><h3>Costo por compra en Meta, por línea</h3>
+    <div class="row"><span>Blazers</span><div><div class="bar now" style="width:100%"></div></div><span class="v">$124.900</span></div>
+    <div class="row"><span>Buzos</span><div><div class="bar now" style="width:74%"></div></div><span class="v">$92.700</span></div>
+    <div class="row"><span>Umbral</span><div><div class="bar" style="width:46%"></div></div><span class="v">$58.000</span></div>
+    <p class="note">$58.000 es el umbral de trabajo: deja margen frente al 20%.</p></div>
+</div>
+
+<div class="why" style="margin-top:14px"><b>Qué significa</b>Hay demanda: se vendieron $19,1 M más que en 2025. Pero esas ventas adicionales costaron $8,7 M más de pauta, es decir, $45 de pauta por cada $100 de venta nueva. El problema no es vender, es lo que cuesta cada venta.</div>
+<div class="grid g3" style="margin-top:14px">
+  <div class="why"><b>Lo que funcionó en noviembre 2025</b>Navidad trajo 359 de las 745 compras del mes (48%), con los anuncios más baratos: entre $22.000 y $36.000 por compra.</div>
+  <div class="why"><b>Lo que pasó este año</b>Navidad lleva solo el 3% de la pauta. El presupuesto se concentró en la línea más cara de vender.</div>
+  <div class="why"><b>La decisión</b>Mover la pauta hacia lo que vende barato y tiene fecha de vencimiento (Navidad, Black Days), y ponerle límite a lo que vende caro.</div>
+</div>
+
+<h2><small>2 · La estructura</small>Dos campañas, cinco conjuntos, 19 anuncios</h2>
+<p class="lead">Una campaña sostiene la venta de todos los días. La otra empuja lo que solo se vende en esta temporada. Cada conjunto tiene un límite claro.</p>
+
+<div class="grid g2">
+  <div class="camp">
+    <div class="top"><b>Campaña 1 · Ventas todo el año</b><span>La campaña actual · de $1.500.000 a $750.000/día · con tope de costo por compra</span></div>
+    <div class="sets">
+      <div class="set" style="border-left-color:var(--s1)">
+        <div class="hd"><b>Prendas (buzos)</b><span>~$550.000/día</span></div>
+        <div class="meta">Tope por compra $75.000 · 3 anuncios</div>
+        <div class="ads">2 catálogos (explorador y unisex) · 1 video cuello alto</div>
+        <div class="pq"><i>Por qué:</i> el catálogo explorador trajo 67 de las 81 compras. Se queda lo que vende; salen las piezas sin compras.</div>
+      </div>
+      <div class="set" style="border-left-color:var(--s1)">
+        <div class="hd"><b>Blazers (mujer)</b><span>máx. $200.000/día</span></div>
+        <div class="meta">Tope por compra $80.000 · 4 anuncios</div>
+        <div class="ads">2 catálogos (explorador y blazers con imagen) · 1 video general de blazers · 1 video cropped</div>
+        <div class="pq"><i>Por qué:</i> hay inventario que mover (447 Harrington, 241 blazers), pero con límite: era la compra más cara de la cuenta. El explorador fue el mejor del conjunto ($113.700 por compra).</div>
+      </div>
+    </div>
+  </div>
+  <div class="camp">
+    <div class="top"><b>Campaña 2 · Temporada</b><span>Nueva · presupuesto por conjunto · sin tope (mayor volumen)</span></div>
+    <div class="sets">
+      <div class="set" style="border-left-color:var(--s2)">
+        <div class="hd"><b>Navidad</b><span>$500.000 → $600.000/día</span></div>
+        <div class="meta">Desde el viernes 13 · 4 anuncios</div>
+        <div class="ads">2 videos · 1 imagen · 1 catálogo Navidad</div>
+        <div class="pq"><i>Por qué:</i> 580 unidades que solo se venden estas semanas. Fue la venta más barata de 2025 y este año solo ha recibido el 3% de la pauta.</div>
+      </div>
+      <div class="set" style="border-left-color:var(--s3)">
+        <div class="hd"><b>Monterrosa</b><span>$200.000/día</span></div>
+        <div class="meta">Desde el viernes 13 · 4 anuncios</div>
+        <div class="ads">2 videos · 1 imagen · 1 catálogo Monterrosa</div>
+        <div class="pq"><i>Por qué:</i> colección nueva (300 sweaters). El video con modelo ya trajo 2 compras a $26.700 cada una con muy poca pauta. Con presupuesto propio se comprueba si ese costo se sostiene.</div>
+      </div>
+      <div class="set" style="border-left-color:var(--s4)">
+        <div class="hd"><b>Black Days</b><span>$500.000 → $1.280.000/día</span></div>
+        <div class="meta">Desde el martes 17 · 4 anuncios</div>
+        <div class="ads">2 videos · 1 imagen · 1 catálogo explorador de toda la tienda</div>
+        <div class="pq"><i>Por qué:</i> 10% en toda la tienda. No tiene historial: en 2025 solo hubo un Hot Sale del 1 al 11 ($49.500 por compra). Es una prueba que crece solo si las ventas la pagan.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid g3" style="margin-top:14px">
+  <div class="why"><b>Por qué dos campañas</b>Cada una tiene un trabajo. La 1 vende lo de todos los días y lleva tope de costo por compra. La 2 mueve inventario con fecha de vencimiento y va a mayor volumen. En una sola, Meta le da la plata a lo que ya conoce: así Navidad se quedó con el 3%.</div>
+  <div class="why"><b>Por qué máximo 4 anuncios por conjunto</b>Meta necesita unas 50 compras por semana en un conjunto para aprender. Prendas tenía 8 anuncios y uno solo hizo 67 de las 81 compras; los demás gastaron sin aportar.</div>
+  <div class="why"><b>Por qué estos anuncios</b>Se queda lo que tiene compras: los catálogos exploradores, donde Meta elige el producto para cada persona, son los que más venden. Lo nuevo entra con poco presupuesto y una regla de salida.</div>
+</div>
+
+<h2><small>3 · El presupuesto</small>Empieza bajo y sube solo cuando las ventas lo respaldan</h2>
+<p class="lead">Presupuesto diario planeado por conjunto. Ningún aumento pasa del 20%, para que Meta no pierda lo aprendido.</p>
+
+<div class="grid g2" style="grid-template-columns:1.55fr 1fr">
+  <div class="card">
+    <h3>Presupuesto diario planeado (miles de pesos)</h3>
+    <div class="legend">
+      <span><i style="background:var(--s1)"></i>Ventas todo el año</span>
+      <span><i style="background:var(--s2)"></i>Navidad</span>
+      <span><i style="background:var(--s3)"></i>Monterrosa</span>
+      <span><i style="background:var(--s4)"></i>Black Days</span>
+      <span><i style="background:var(--neutral)"></i>Campaña actual</span>
+    </div>
+    <svg id="daily" viewBox="0 0 700 300" role="img" aria-label="Presupuesto diario planeado por conjunto, del 12 al 30 de noviembre"></svg>
+  </div>
+  <div class="card">
+    <h3>Pauta acumulada del mes (millones)</h3>
+    <svg id="cum" viewBox="0 0 430 300" role="img" aria-label="Pauta acumulada planeada frente al techo de 60 millones"></svg>
+    <p class="note">El plan cierra noviembre en $59,9 M, dentro del techo de $60 M.</p>
+  </div>
+</div>
+
+<div class="card" style="margin-top:14px">
+<table>
+<tr><th>Fechas</th><th class="n">Ventas todo el año</th><th class="n">Navidad</th><th class="n">Monterrosa</th><th class="n">Black Days</th><th class="n">Total por día</th><th class="n">Ventas mínimas por día (20%)</th></tr>
+<tr><td>Vie 13 – Lun 16</td><td class="n">$750.000</td><td class="n">$500.000</td><td class="n">$200.000</td><td class="n">—</td><td class="n"><b>$1.450.000</b></td><td class="n">$7,3 M</td></tr>
+<tr><td>Mar 17 – Jue 19</td><td class="n">$750.000</td><td class="n">$600.000</td><td class="n">$200.000</td><td class="n">$500.000 → $720.000</td><td class="n"><b>$2.050.000 → $2.270.000</b></td><td class="n">$10,3 – 11,4 M</td></tr>
+<tr><td>Vie 20 – Dom 22</td><td class="n">$750.000</td><td class="n">$600.000</td><td class="n">$200.000</td><td class="n">$860.000 → $1.230.000</td><td class="n"><b>$2.410.000 → $2.780.000</b></td><td class="n">$12,1 – 13,9 M</td></tr>
+<tr><td>Lun 23 – Lun 30</td><td class="n">$750.000</td><td class="n">$600.000</td><td class="n">$200.000</td><td class="n">$1.280.000</td><td class="n"><b>$2.830.000</b></td><td class="n">$14,2 M</td></tr>
+</table>
+</div>
+
+<h2><small>4 · La meta</small>El 20% solo se cumple si el mes llega a $300 M</h2>
+<p class="lead">Con $60 M de pauta, el porcentaje final depende de cuánto se venda. Faltan $252 M entre el 12 y el 30.</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h3>Pauta sobre ventas al cierre, según las ventas del mes</h3>
+    <div class="sc">
+      <div class="ko"><b>24%</b><span>Si se venden $250 M</span></div>
+      <div class="ok"><b>20%</b><span>Si se venden $300 M (meta)</span></div>
+      <div class="ok"><b>18,2%</b><span>Si se venden $330 M</span></div>
+    </div>
+    <p class="note">Como los primeros 11 días van en 32,9%, del 12 al 30 la pauta debe quedar cerca de 17,6% de las ventas para que el mes cierre en 20%.</p>
+  </div>
+  <div class="card cmp">
+    <h3>Pedidos por día en Shopify</h3>
+    <div class="row" style="grid-template-columns:150px 1fr 60px"><span>2025 · 1 al 11</span><div><div class="bar" style="width:23%"></div></div><span class="v">12</span></div>
+    <div class="row" style="grid-template-columns:150px 1fr 60px"><span>2025 · 12 al 30</span><div><div class="bar" style="width:75%"></div></div><span class="v">39</span></div>
+    <div class="row" style="grid-template-columns:150px 1fr 60px"><span>2026 · 1 al 11</span><div><div class="bar now" style="width:33%"></div></div><span class="v">17</span></div>
+    <div class="row" style="grid-template-columns:150px 1fr 60px"><span>2026 · meta 12 al 30</span><div><div class="bar now" style="width:100%;opacity:.55"></div></div><span class="v">52</span></div>
+    <p class="note">En 2025 la segunda parte del mes multiplicó los pedidos por 3,2. La meta de este año pide multiplicarlos por 3,1.</p>
+  </div>
+</div>
+
+<div class="grid g2" style="margin-top:14px">
+  <div class="card">
+    <h3>MER y ROAS: los dos indicadores que se siguen</h3>
+    <table>
+      <tr><th>MER (ventas ÷ pauta)</th><th class="n">Pauta sobre ventas</th><th class="n">ROAS equivalente en Meta</th><th>Lectura</th></tr>
+      <tr><td>3,0</td><td class="n">33%</td><td class="n">2,7</td><td>Donde estamos (1–11 nov)</td></tr>
+      <tr><td>4,0</td><td class="n">25%</td><td class="n">3,5</td><td>Primer escalón; aún sobre el límite</td></tr>
+      <tr><td><b>5,0</b></td><td class="n"><b>20%</b></td><td class="n"><b>4,4</b></td><td><b>Meta del mes</b></td></tr>
+      <tr><td>5,7</td><td class="n">17,6%</td><td class="n">5,0</td><td>Necesario del 12 al 30</td></tr>
+    </table>
+    <p class="note">Noviembre 2025 completo cerró con MER 5,8; del 1 al 11 de ese año iba en 4,1.</p>
+  </div>
+  <div class="card rules">
+    <div class="rule"><div><b>MER: el que decide</b><span>Ventas totales de Shopify ÷ pauta de Meta de la tienda. Define si se sube o no el presupuesto.</span></div></div>
+    <div class="rule"><div><b>ROAS: el que compara</b><span>Lo reporta Meta y solo cuenta las ventas que se atribuye (cerca del 88% del MER). Sirve para decidir qué anuncio o conjunto pausar.</span></div></div>
+    <div class="rule"><div><b>Un MER de 4 no alcanza</b><span>Equivale a 25% de pauta. La meta de dirección (20%) es un MER de 5.</span></div></div>
+  </div>
+</div>
+
+<h2><small>5 · Las reglas</small>Cómo se decide cada día</h2>
+<div class="grid g2">
+  <div class="card rules">
+    <div class="rule"><div><b>Se mide contra Shopify, no contra Meta</b><span>Cada mañana se divide lo que se gastó ayer en pauta entre lo que se vendió ayer en Shopify. Ejemplo: $2.000.000 de pauta y $10.000.000 de ventas = 20%. Entre más bajo el porcentaje, mejor.</span></div></div>
+    <div class="rule"><div><b>Si la pauta de ayer fue menos del 18% de las ventas, el presupuesto de Black Days sube 20%</b><span>Ejemplo: de $500.000 a $600.000. Entre 18% y 20% se deja igual. Por encima de 20% no se sube ningún conjunto.</span></div></div>
+    <div class="rule"><div><b>Navidad y Monterrosa suben por costo por compra</b><span>Navidad si está bajo $58.000; Monterrosa si está bajo $75.000.</span></div></div>
+    <div class="rule"><div><b>Black Days tiene salida el viernes 20</b><span>Si su compra cuesta más que la del explorador de buzos, deja de subir y los aumentos pasan a Prendas.</span></div></div>
+    <div class="rule"><div><b>Anuncio con $160.000 gastados y sin compras: se pausa</b><span>Pausar no afecta el aprendizaje. Después del viernes 13 no se agregan ni editan anuncios.</span></div></div>
+    <div class="rule"><div><b>Si las ventas superan la meta, hay un segundo escalón</b><span>Campaña 1 a $1.000.000, Navidad a $800.000 y Black Days hasta $2.000.000, siempre bajo 20%.</span></div></div>
+  </div>
+  <div class="card">
+    <h3>Riesgos que se vigilan</h3>
+    <table>
+      <tr><th>Riesgo</th><th>Qué se hace</th></tr>
+      <tr><td>El costo de mostrar anuncios sigue 80% arriba de 2025 y sube más en Black Friday</td><td>Topes por compra en la campaña 1; revisar gasto por ubicación</td></tr>
+      <tr><td>La campaña de Temporada es nueva y arranca sin historial</td><td>Se monta el viernes 13 para que aprenda antes del martes 17</td></tr>
+      <tr><td>Monterrosa y Black Days no tienen historial propio</td><td>Monterrosa: si el martes 17 la compra pasa de $125.000, se apaga. Black Days: regla de salida del viernes 20</td></tr>
+      <tr><td>Las ventas no llegan a $300 M</td><td>El presupuesto no sube: el porcentaje se protege antes que el volumen</td></tr>
+    </table>
+  </div>
+</div>
+
+<h2><small>6 · Calendario</small>Fechas clave</h2>
+<div class="tl">
+  <div><b>Vie 13</b>Montaje completo. Único día de cambios.</div>
+  <div><b>Dom 15</b>Revisión rápida de gasto.</div>
+  <div><b>Lun 16</b>Correo y WhatsApp a clientes: acceso anticipado.</div>
+  <div><b>Mar 17</b>Precios con 10%. Arranca Black Days. Se desactiva el cupón.</div>
+  <div><b>Vie 20</b>Revisión de la primera semana.</div>
+  <div><b>Lun 23</b>Black Days en su nivel máximo del plan.</div>
+  <div><b>Lun 30</b>Cierre y balance del mes.</div>
+</div>
+
+<footer>Fuentes: Shopify (ventas, pedidos y sesiones del 1 al 11 de noviembre de 2025 y 2026) y Administrador de anuncios de Meta (exportes de noviembre 2025 y 1–11 de noviembre 2026). La pauta del 12 de noviembre se estima en $1.500.000 (presupuesto actual). El fin de Black Days se asume el 30 de noviembre. Seguimiento diario en el archivo "Control pauta noviembre 2026.xlsx".</footer>
+</div>
+
+<script>
+const S=[{k:'Ventas todo el año',c:'#1E7FA3'},{k:'Navidad',c:'#B3394A'},{k:'Monterrosa',c:'#A67C1A'},{k:'Black Days',c:'#5A4A8C'}];
+const DOW=['D','L','M','M','J','V','S'];
+const bd={17:500,18:600,19:720,20:860,21:1030,22:1230};
+const days=[];
+for(let d=12;d<=30;d++){
+  if(d===12){days.push({d,v:[0,0,0,0],act:1500});continue;}
+  days.push({d,v:[750,d<17?500:600,200,d<17?0:(bd[d]||1280)],act:0});
+}
+const fmt=n=>'$'+(n*1000).toLocaleString('es-CO');
+const NS='http://www.w3.org/2000/svg';
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e;};
+const tip=document.getElementById('tip');
+function show(ev,html){tip.innerHTML=html;tip.style.opacity=1;const w=tip.offsetWidth;let x=ev.clientX+14;if(x+w>innerWidth-8)x=ev.clientX-w-14;tip.style.left=x+'px';tip.style.top=(ev.clientY-10)+'px';}
+function hide(){tip.style.opacity=0;}
+
+(function(){
+  const svg=document.getElementById('daily'),W=700,H=300,L=38,R=8,T=26,B=40,max=3000;
+  const pw=W-L-R,ph=H-T-B,bw=pw/days.length,y=v=>T+ph-(v/max)*ph;
+  [0,1000,2000,3000].forEach(g=>{el('line',{x1:L,x2:W-R,y1:y(g),y2:y(g),stroke:'#E2D9CC','stroke-width':1},svg);
+    const t=el('text',{x:L-6,y:y(g)+4,'text-anchor':'end'},svg);t.textContent=g?(g/1000)+' M':'0';});
+  days.forEach((o,i)=>{
+    const x=L+i*bw+3,w=bw-6;let acc=0;const tot=o.act||o.v.reduce((a,b)=>a+b,0);
+    const g=el('g',{},svg);
+    if(o.act){el('path',{d:bar(x,y(o.act),w,y(0)-y(o.act),true),fill:'#B9C2C5'},g);}
+    else{const last=o.v.map((v,j)=>v>0?j:-1).reduce((a,b)=>Math.max(a,b),-1);
+      o.v.forEach((v,j)=>{if(!v)return;const y1=y(acc+v),h=y(acc)-y1-(j===last?0:2);
+        el('path',{d:bar(x,y1,w,Math.max(h,1),j===last),fill:S[j].c},g);acc+=v;});}
+    const hit=el('rect',{x:L+i*bw,y:T,width:bw,height:ph,fill:'transparent'},g);
+    const html='<b>'+DOW[new Date(2026,10,o.d).getDay()]+' '+o.d+' nov</b>'+(o.act?'<span>Campaña actual<i>'+fmt(o.act)+'</i></span>':S.map((s,j)=>o.v[j]?'<span>'+s.k+'<i style="font-style:normal">'+fmt(o.v[j])+'</i></span>':'').join(''))+'<span style="border-top:1px solid #456;margin-top:3px;padding-top:3px">Total<i style="font-style:normal">'+fmt(tot)+'</i></span>';
+    hit.addEventListener('mousemove',e=>show(e,html));hit.addEventListener('mouseleave',hide);
+    const t1=el('text',{x:x+w/2,y:H-B+15,'text-anchor':'middle'},svg);t1.textContent=o.d;
+    const t2=el('text',{x:x+w/2,y:H-B+28,'text-anchor':'middle','font-size':9.5},svg);t2.textContent=DOW[new Date(2026,10,o.d).getDay()];
+  });
+  const note=(d,txt)=>{const i=d-12,x=L+i*bw+bw/2;const o=days[i];const tot=o.act||o.v.reduce((a,b)=>a+b,0);
+    const t=el('text',{x:x-bw/2+3,y:y(tot)-7,class:'strong'},svg);t.textContent=txt;};
+  note(13,'Montaje · $1,45 M');note(17,'Black Days');
+  const t=el('text',{x:W-R,y:y(2830)-7,'text-anchor':'end',class:'strong'},svg);t.textContent='$2,83 M por día';
+  function bar(x,y,w,h,round){const r=round?Math.min(4,h):0;return `M${x},${y+h}V${y+r}Q${x},${y} ${x+r},${y}H${x+w-r}Q${x+w},${y} ${x+w},${y+r}V${y+h}Z`;}
+})();
+
+(function(){
+  const svg=document.getElementById('cum'),W=430,H=300,L=34,R=44,T=26,B=40,max=70;
+  const pw=W-L-R,ph=H-T-B;
+  const pts=[{d:11,v:15.75}];let a=15.75;days.forEach(o=>{a+=(o.act||o.v.reduce((x,y)=>x+y,0))/1000;pts.push({d:o.d,v:a});});
+  const x=d=>L+((d-11)/19)*pw,y=v=>T+ph-(v/max)*ph;
+  [0,20,40,60].forEach(g=>{el('line',{x1:L,x2:W-R,y1:y(g),y2:y(g),stroke:'#E2D9CC','stroke-width':1},svg);
+    const t=el('text',{x:L-6,y:y(g)+4,'text-anchor':'end'},svg);t.textContent=g;});
+  el('line',{x1:L,x2:W-R,y1:y(60),y2:y(60),stroke:'#B3261E','stroke-width':1.5,'stroke-dasharray':'5 4'},svg);
+  const tt=el('text',{x:L+4,y:y(60)-6,class:'strong'},svg);tt.textContent='Techo $60 M';
+  el('path',{d:'M'+pts.map(p=>x(p.d)+','+y(p.v)).join('L'),fill:'none',stroke:'#003744','stroke-width':2,'stroke-linejoin':'round'},svg);
+  [11,13,17,23,30].forEach(d=>{const t=el('text',{x:x(d),y:H-B+15,'text-anchor':'middle'},svg);t.textContent=d;});
+  const tx=el('text',{x:x(20.5),y:H-B+30,'text-anchor':'middle','font-size':9.5},svg);tx.textContent='día de noviembre';
+  const lab=(p,txt,dy)=>{el('circle',{cx:x(p.d),cy:y(p.v),r:4,fill:'#003744',stroke:'#fff','stroke-width':2},svg);
+    const t=el('text',{x:x(p.d)+7,y:y(p.v)+dy,class:'strong'},svg);t.textContent=txt;};
+  lab(pts[0],'$15,8 M',14);lab(pts[pts.length-1],'$59,9',16);
+  const dot=el('circle',{r:5,fill:'#003744',stroke:'#fff','stroke-width':2,opacity:0},svg);
+  const hit=el('rect',{x:L,y:T,width:pw,height:ph,fill:'transparent'},svg);
+  hit.addEventListener('mousemove',e=>{const b=svg.getBoundingClientRect();const px=(e.clientX-b.left)/b.width*W;
+    let d=Math.round(11+(px-L)/pw*19);d=Math.max(11,Math.min(30,d));const p=pts[d-11];
+    dot.setAttribute('cx',x(p.d));dot.setAttribute('cy',y(p.v));dot.setAttribute('opacity',1);
+    show(e,'<b>Hasta el '+p.d+' de nov</b><span>Pauta acumulada<i style="font-style:normal">$'+p.v.toFixed(1).replace('.',',')+' M</i></span><span>Disponible<i style="font-style:normal">$'+(60-p.v).toFixed(1).replace('.',',')+' M</i></span>');});
+  hit.addEventListener('mouseleave',()=>{hide();dot.setAttribute('opacity',0);});
+})();
+</script>
+</body>
+</html>
